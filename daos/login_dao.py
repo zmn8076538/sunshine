@@ -1,4 +1,3 @@
-import unittest
 from cfg import cursor
 
 def login_get_password_by_username(username):
@@ -11,9 +10,3 @@ def login_get_password_by_username(username):
 
 
 
-
-
-class test_dao(unittest.TestCase):
-
-    def test_001(self):
-        print(login_get_password_by_username('wyl'))

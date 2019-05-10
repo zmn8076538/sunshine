@@ -11,30 +11,60 @@
             margin: 0;
             padding: 0;
         }
-        /* #all{
-            width: 800px;
-            height: 400px;
-            background: yellow;
+        #all{
+            width: 300px;
+            height: 220px;
+            /* background: yellow; */
+            border:1px solid rgb(190, 189, 189);
+            border-radius: 10px;
             position: absolute;
             left: 50%;
             top: 50%;
             transform: translate(-50%,-50%);
+        }
+        #dl{
+            width: 300px;
+            height: 50px;
+            /* background: red; */
+            border-bottom:1px dotted rgb(184, 176, 176);
+        }
+        #dl h4{
+            text-align: center;
+            line-height: 50px;
+            margin: 0;
+        }
+        #nr {
+            padding:20px;
+        }
+        /* #nr .btn-zc{
+            margin-left: 70px;
         } */
+        #nr .btn-dl{
+            margin-left: 35px;
+        }
+
     </style>
 </head>
 <body>
     <div id="all">
-        <form method="post" action="/login" style="margin-left:500px;margin-top:200px;">
-            <div class="form-group">
-            <label for="username" stype="display:inline;">账户：</label>
-            <input type="text" class="form-control" id="username" name="username" style="display:inline;width:200px;"autocomplete="off" />
-            </div>
-            <div class="form-group">
-                <label for="password" style="display:inline;">密码：</label>
-                <input type="password" class="form-control" id="password" name="password" style="display:inline;width:200px;"autocomplete="off" />
-            </div>
-            <button type="submit" class="btn btn-primary">登陆</button>
-        </form>
+        <div id="dl">
+            <h4>登录</h4>
+        </div>
+        <div id="nr">
+            <form method="post" action="/login">
+                <div class="form-group">
+                <label for="user" stype="display:inline;">账户：</label>
+                <input name="username" type="text" class="form-control" id="user" style="display:inline;width:200px;"autocomplete="off" />
+                </div>
+                <div class="form-group">
+                    <label for="password" style="display:inline;">密码：</label>
+                    <input name="password" type="password" class="form-control" id="password" style="display:inline;width:200px;"autocomplete="off" />
+                </div>
+                <a href="">没有账号？点击注册</a>
+                <!-- <button type="submit" class="btn btn-primary btn-zc">注册</button> -->
+                <button type="submit" class="btn btn-primary btn-dl">登录</button>
+            </form>
+        </div>
     </div>
 
 </body>
