@@ -11,34 +11,63 @@
             margin: 0;
             padding: 0;
         }
-        /* #all{
-            width: 800px;
-            height: 400px;
-            background: yellow;
+        #all{
+            width: 340px;
+            height: 270px;
+            /* background: yellow; */
+            border:1px solid rgb(190, 189, 189);
+            border-radius: 10px;
             position: absolute;
             left: 50%;
             top: 50%;
             transform: translate(-50%,-50%);
-        } */
+        }
+        #dl{
+            width: 340px;
+            height: 50px;
+            /* background: red; */
+            border-bottom:1px dotted rgb(184, 176, 176);
+        }
+        #dl h4{
+            text-align: center;
+            line-height: 50px;
+            margin: 0;
+        }
+        #nr {
+            padding:20px;
+        }
+        #nr  .form-left{
+            margin-left: 27px;
+        }
+        #nr .btn-dl{
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
     </style>
 </head>
 <body>
     <div id="all">
-        <form method="post" action="/regist" style="margin-left:500px;margin-top:200px;">
-            <div class="form-group">
-            <label for="user" stype="display:inline;">账户：</label>
-            <input name="username" type="text" class="form-control" id="user" style="display:inline;width:200px;"autocomplete="off" />
-            </div>
-            <div class="form-group">
-                <label for="password" style="display:inline;">密码：</label>
-                <input name="password" type="password" class="form-control" id="password" style="display:inline;width:200px;"autocomplete="off" />
-            </div>
-            <div class="form-group">
-                <label for="repassword" style="display:inline;">确认密码：</label>
-                <input name="repassword" type="password" class="form-control" id="repassword" style="display:inline;width:200px;"autocomplete="off" />
-            </div>
-            <button type="submit" class="btn btn-primary">注册</button>
-        </form>
+        <div id="dl">
+            <h4>注册</h4>
+        </div>
+        <div id="nr">
+            <form method="post" action="/regist">
+                <div class="form-group form-left">
+                    <label for="user" stype="display:inline;">账户：</label>
+                    <input name="username" type="text" class="form-control" id="user" style="display:inline;width:200px;"autocomplete="off" />
+                </div>
+                <div class="form-group form-left">
+                    <label for="password" style="display:inline;">密码：</label>
+                    <input name="password" type="password" class="form-control" id="password" style="display:inline;width:200px;"autocomplete="off" />
+                </div>
+                <div class="form-group">
+                    <label for="repassword" style="display:inline;">确认密码：</label>
+                    <input name="repassword" type="password" class="form-control" id="repassword" style="display:inline;width:200px;"autocomplete="off" />
+                </div>
+                <button type="submit" class="btn btn-primary btn-dl">注册</button>
+            </form>
+        </div>
     </div>
 
 </body>
