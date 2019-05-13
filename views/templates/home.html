@@ -2,10 +2,136 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <h1>主页面</h1>
+    <!-- <link rel="shotcut icon" href="bitbug_favicon.ico"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1047560_xq50ar43aqd.css">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #list{
+            width: 800px;
+            height: 500px;
+            /* background: red; */
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            border: 1px solid black;
+        }
+        #list-head{
+            width: 800px;
+            height: 100px;
+            /* position: absolute; */
+            /* background: yellow; */
+            /* border-bottom: 1px solid rgb(5, 5, 29); */
+        }
+        #list-head .list-head-left{
+            width: 200px;
+            height: 100px;
+            float: left;
+            background: rgb(49, 59, 117);
+        }
+        #list-head .list-head-right{
+            width: 600px;
+            height: 100px;
+            background: rgb(211, 214, 212);
+            float: right;
+        }
+        #list-head .list-head-left h2{
+            line-height: 100px;
+            text-align: center;
+            color: white;
+        }
+        #list-head .list-head-right h2{
+            /* line-height: 100px; */
+            margin-left: 30px;
+            margin-top: 35px;
+            color: rgb(92, 87, 87);
+        }
+        #list-head .list-head-right h6{
+            line-height: 100px; 
+            margin-left: 30px;
+            margin-top: 30px;
+            color: rgb(92, 87, 87);
+        }
+        #list-body{
+            width: 200px;
+            height: 400px;
+            background: rgb(78, 95, 105);
+            /* border-top: 1px solid black; */
+        }
+        #list-body .list-body-left li{
+            list-style: none;
+            height: 60px;
+            color: aliceblue;
+            /* margin-left: 20px; */
+            line-height: 60px;
+            text-align: center;
+            cursor: pointer;
+        }
+        #list-body .list-body-left li.changeli{
+            background:rgb(43, 53, 59);
+        }
+        #list-body .dow{
+            position: absolute;
+            right: 0px;
+            top:100px;
+            background: rgb(231, 230, 230);
+            height: 400px;
+            width: 600px;
+            display: none;
+            /* border-top: 1px solid black; */
+        }
+        #list-body .show{
+            display: block;
+        }
+    </style>
 </head>
 <body>
-
+    <div id="list">
+        <div id="list-head">
+            <div class="list-head-left">
+                <h2>商圈后台管理系统</h2>
+            </div>
+            <div class="list-head-right">
+                <h2>业务人员管理</h2>
+                <!-- <h6>当前用户：小UU</h6> -->
+            </div>
+        </div>
+        <div id="list-body">
+            <ul class="list-body-left">
+                <li class="changeli"><i class="iconfont icon-renyuan"></i>业务人员管理</li>
+                <li><i class="iconfont icon-shangpin"></i>代理商品管理</li>
+                <li><i class="iconfont icon-geren"></i>个人信息管理</li>
+                <li><i class="iconfont icon-dizhi"></i>收货地址管理</li>
+                <li><i class="iconfont icon-mendian"></i>在售门店管理</li>
+            </ul>
+            <div class="dow show">业务人员管理</div>
+            <div class="dow"> 代理商品管理</div>
+            <div class="dow"> 个人信息管理</div>
+            <div class="dow"> 收货地址管理</div>
+            <div class="dow">在售门店管理</div>
+        </div>
+    </div>
+    <script>
+        var oDiv=document.getElementsByClassName('dow');
+        var aLi=document.getElementsByTagName('li');
+        for(var i=0;i<aLi.length;i++){
+            aLi[i].index = i;
+            aLi[i].onclick=function(){
+                for(j=0;j<aLi.length;j++){
+                    aLi[j].className=' '
+                    oDiv[j].className='dow';
+                } 
+                aLi[this.index].className='changeli';
+                oDiv[this.index].className='dow show';
+            }
+            
+        }
+    </script>
 </body>
 </html>
