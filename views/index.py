@@ -32,3 +32,7 @@ def regist():
     else:
         return render_template('regist.html')
 
+@app.route('/regist_login')
+def regist_login():
+    return render_template('index.html')
+
