@@ -38,7 +38,7 @@ def regist():
 def regist_login():
     return render_template('index.html')
 
-@app.route('/home')
+@app.route('/home',methods=['GET'])
 def home():
     return render_template('home.html')
 
