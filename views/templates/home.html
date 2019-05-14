@@ -13,63 +13,69 @@
             padding: 0;
         }
         #list{
-            width: 800px;
-            height: 500px;
+            /* width: 100%;
+            height: 100%; */
             /* background: red; */
             position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%,-50%);
-            border: 1px solid black;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            /* transform: translate(-50%,-50%);
+            border: 1px solid black; */
+            /* background: red; */
         }
         #list-head{
-            width: 800px;
-            height: 100px;
+            width: 100%;
+            height: 20%;
+            /* 100px */
             /* position: absolute; */
             /* background: yellow; */
             /* border-bottom: 1px solid rgb(5, 5, 29); */
         }
         #list-head .list-head-left{
-            width: 200px;
-            height: 100px;
+            width: 20%;
+            height: 100%;
             float: left;
             background: rgb(49, 59, 117);
         }
         #list-head .list-head-right{
-            width: 600px;
-            height: 100px;
+            width: 80%;
+            height: 100%;
             background: rgb(211, 214, 212);
             float: right;
         }
         #list-head .list-head-left h2{
-            line-height: 100px;
+            line-height: 8rem;
             text-align: center;
+            /* font-size: 4rem; */
             color: white;
         }
         #list-head .list-head-right h2{
-            /* line-height: 100px; */
-            margin-left: 30px;
-            margin-top: 35px;
+            line-height: 8rem;
+            margin-left: 1rem;
+            /* margin-top: 35px; */
+            
             color: rgb(92, 87, 87);
         }
         #list-head .list-head-right h6{
-            line-height: 100px; 
-            margin-left: 30px;
-            margin-top: 30px;
+            line-height: 8rem; 
+            margin-left: 1rem;
+            /* margin-top: 30px; */
             color: rgb(92, 87, 87);
         }
         #list-body{
-            width: 200px;
-            height: 400px;
+            width: 20%;
+            height: 80%;
             background: rgb(78, 95, 105);
             /* border-top: 1px solid black; */
         }
         #list-body .list-body-left li{
             list-style: none;
-            height: 60px;
+            height: 5rem;
             color: aliceblue;
             /* margin-left: 20px; */
-            line-height: 60px;
+            line-height: 5rem;
             text-align: center;
             cursor: pointer;
         }
@@ -79,10 +85,10 @@
         #list-body .dow{
             position: absolute;
             right: 0px;
-            top:100px;
+            top:8rem;
             background: rgb(231, 230, 230);
-            height: 400px;
-            width: 600px;
+            height:80%;
+            width: 80%;
             display: none;
             /* border-top: 1px solid black; */
         }
