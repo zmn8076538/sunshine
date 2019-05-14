@@ -221,6 +221,7 @@
                         <td>保障期间</td>
                     </thead>
                     <tbody>
+                        {% raw %}
                         <tr v-for='item in showlist'>
                             <td>{{ item.cname }}</td>
                             <td>{{ item.sex }}</td>
@@ -233,6 +234,7 @@
                             <td>{{ item.year}}</td>
                             <td>{{ item.time }}</td>
                         </tr>
+                        {% endraw %}
                         <!-- <tr>
                             <td>a</td>
                             <td>b</td>
