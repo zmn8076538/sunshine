@@ -129,8 +129,8 @@
                         <tr>
                             <td> 
                                 <div class="form-group">
-                                <label for="exampleInputName2">客户姓名</label>
-                                <input type="text" class="form-control" v-model='proname' id="exampleInputName2" placeholder="请输客户姓名">
+                                <label for="exampleInputName1">客户姓名</label>
+                                <input type="text" class="form-control" v-model='proname' id="exampleInputName1" placeholder="请输客户姓名">
                                 </div>
                             </td>
                             <td> 
@@ -143,56 +143,56 @@
                         <tr>
                             <td> 
                                 <div class="form-group">
-                                    <label for="exampleInputName2">身份证号</label>
-                                    <input type="text" class="form-control" v-model='proid' id="exampleInputName2" placeholder="请输入身份证号">
+                                    <label for="exampleInputName3">身份证号</label>
+                                    <input type="text" class="form-control" v-model='prosid' id="exampleInputName3" placeholder="请输入身份证号">
                                 </div>
                             </td>
                             <td>  
                                 <div class="form-group">
-                                    <label for="exampleInputName2">银行卡号</label>
-                                    <input type="text" class="form-control" v-model='procard' id="exampleInputName2" placeholder="请输入银行卡号">
+                                    <label for="exampleInputName4">银行卡号</label>
+                                    <input type="text" class="form-control" v-model='procard' id="exampleInputName4" placeholder="请输入银行卡号">
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td>  
                                 <div class="form-group">
-                                    <label for="exampleInputName2">保单号</label>
-                                    <input type="text" class="form-control" v-model='probd' id="exampleInputName2" placeholder="请输入保单号">
+                                    <label for="exampleInputName5">保单号</label>
+                                    <input type="text" class="form-control" v-model='probd' id="exampleInputName5" placeholder="请输入保单号">
                                 </div>
                             </td>
                             <td>
                                 <div class="form-group">
-                                    <label for="exampleInputName2">手机号</label>
-                                    <input type="text" class="form-control" v-model='prophone' id="exampleInputName2" placeholder="请输入手机号">
+                                    <label for="exampleInputName6">手机号</label>
+                                    <input type="text" class="form-control" v-model='prophone' id="exampleInputName6" placeholder="请输入手机号">
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <div class="form-group">
-                                    <label for="exampleInputName2">已参保产品</label>
-                                    <input type="text" class="form-control" v-model='procp' id="exampleInputName2" placeholder="请输入已参保产品">
+                                    <label for="exampleInputName7">已参保产品</label>
+                                    <input type="text" class="form-control" v-model='procp' id="exampleInputName7" placeholder="请输入已参保产品">
                                 </div>
                             </td>
                             <td>  
                                 <div class="form-group">
-                                    <label for="exampleInputName2">交费</label>
-                                    <input type="text" class="form-control" v-model='procharge' id="exampleInputName2" placeholder="请输入交费">
+                                    <label for="exampleInputName8">交费</label>
+                                    <input type="text" class="form-control" v-model='procharge' id="exampleInputName8" placeholder="请输入交费">
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <div class="form-group">
-                                    <label for="exampleInputName2">年限</label>
-                                    <input type="text" class="form-control" v-model='proyear' id="exampleInputName2" placeholder="请输入年限">
+                                    <label for="exampleInputName9">年限</label>
+                                    <input type="text" class="form-control" v-model='proyear' id="exampleInputName9" placeholder="请输入年限">
                                 </div>
                             </td>
                             <td> 
                                 <div class="form-group">
-                                    <label for="exampleInputName2">保障期间</label>
-                                    <input type="text" class="form-control" v-model='protime' id="exampleInputName2" placeholder="请输入保障期间">
+                                    <label for="exampleInputName10">保障期间</label>
+                                    <input type="text" class="form-control" v-model='protime' id="exampleInputName10" placeholder="请输入保障期间">
                                 </div>
                             </td>
                         </tr>
@@ -224,7 +224,7 @@
                         <tr v-for='item in showlist'>
                             <td>{{ item.name }}</td>
                             <td>{{ item.sex }}</td>
-                            <td>{{ item.id }}</td>
+                            <td>{{ item.sid }}</td>
                             <td>{{ item.card }}</td>
                             <td>{{ item.bd }}</td>
                             <td>{{ item.phone }}</td>
@@ -257,7 +257,7 @@
                 productlist:[{
                     name:'xx',
                     sex:'xx',
-                    id:'xx',
+                    sid:'xx',
                     card:'xx',
                     bd:'xx',
                     phone:'xx',
@@ -282,7 +282,7 @@
                 {
                     name:'xx',
                     sex:'xx',
-                    id:'xx',
+                    sid:'xx',
                     card:'xx',
                     bd:'xx',
                     phone:'xx',
