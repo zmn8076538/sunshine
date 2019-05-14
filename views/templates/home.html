@@ -303,6 +303,16 @@
                 //     id:3
                 // }
             ],
+            procname:'',
+            prosex:'',
+            prosid:'',
+            procard:'',
+            probd:'',
+            prophone:'',
+            procp:'',
+            procharge:'',
+            proyear:'',
+            protime:''
             },
             methods:{
                 turn(){
@@ -320,6 +330,39 @@
                         }
                         
                     }
+                },
+                add(){
+                    this.productlist.push({
+                        name:this.procname,
+                        // price:Number.parseInt(this.proprice),
+                        // isred:false,
+                        // // id:1
+                        // id:Symbol()
+                        cname:this.procname,
+                    sex:this.prosex,
+                    sid:this.prosid,
+                    card:this.procard,
+                    bd:this.probd,
+                    phone:this.prophone,
+                    cp:this.procp,
+                    charge:this.procharge,
+                    year:this.proyear,
+                    time:this.protime
+                    });
+                    
+                    this.showlist=[...this.productlist];
+                    // this.proname='';
+                    // this.proprice='';
+                    this.procname='';
+                    this.prosex='';
+                    this.prosid='';
+                    this.procard='';
+                    this.probd='';
+                    this.prophone='';
+                    this.procp='';
+                    this.procharge='';
+                    this.proyear='';
+                    this.protime='';
                 }
             }
         })
