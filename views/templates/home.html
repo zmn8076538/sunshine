@@ -207,7 +207,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td><button type="submit" class="btn btn-default" @click.prevent='add()'>添加</button></td>
+                            <td><button id="add" type="button" class="btn btn-default" @click.prevent='add()'>添加</button></td>
                         </tr>
                     </table>
                     <!-- <div class="form-group">
@@ -336,11 +336,11 @@
                             for(j=0;j<aLi.length;j++){
                                 aLi[j].className=' '
                                 oDiv[j].className='dow';
-                            } 
+                            }
                             aLi[this.index].className='changeli';
                             oDiv[this.index].className='dow show';
                         }
-                        
+
                     }
                 },
                 add(){
@@ -361,7 +361,7 @@
                     year:this.proyear,
                     time:this.protime
                     });
-                    
+
                     this.showlist=[...this.productlist];
                     // this.proname='';
                     // this.proprice='';
@@ -381,12 +381,13 @@
     </script>
 
     <script type="text/javascript">
-        $("#addCustomer").click(function() {
+        $("#add").click(function() {
             $.ajax({
                 url: "/addCustomer",//要请求的服务器url
                 //这是一个对象，表示请求的参数，两个参数：method=ajax&val=xxx，服务器可以通过request.getParameter()来获取
                 //data:{method:"ajaxTest",val:value},
                 data: {
+                    userId: document.cookie.split(";")[0].split("=")[1],
                     name: $("#name").val(),
                     gender: $("#gender").val(),
                     idcard: $("#idcard").val(),
@@ -397,19 +398,17 @@
                     payment: $("#payment").val(),
                     paymentyear: $("#paymentyear").val(),
                     safeguard: $("#safeguard").val(),
-                    detail: $("#detail").val(),
+                    detail: $("#detail").val()
                 },
                 async: true,   //是否为异步请求
                 cache: false,  //是否缓存结果
                 type: "POST", //请求方式为POST
                 dataType: "json",   //服务器返回的数据是什么类型
                 success: function(result){  //这个方法会在服务器执行成功是被调用 ，参数result就是服务器返回的值(现在是json类型)
-                    if(result.message == "success"){
-                        window.location.href="/home";
-                    }
-                    else {
-                        alert(result.message);
-                    }
+                     alert(result.message);
+                     $("#name").val("");
+
+
                 }
             });
     });
