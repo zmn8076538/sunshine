@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="http://at.alicdn.com/t/font_1047560_xq50ar43aqd.css">
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <title>Document</title>
     <style>
         *{
@@ -124,75 +125,84 @@
                 <li @click='turn()'><i class="iconfont icon-mendian"></i>已出单客户</li>
             </ul>
             <div class="dow show">新建客户
-                <form class="form-inline text-center" style="margin:15px;">
+                <form id="addCustomer" class="form-inline text-center" style="margin:15px;">
                     <table class="table-xj">
                         <tr>
                             <td> 
                                 <div class="form-group">
-                                <label for="exampleInputName1">客户姓名</label>
-                                <input name="exampleInputName1" type="text" class="form-control" v-model='procname' id="exampleInputName1" placeholder="请输客户姓名">
+                                <label for="name">客户姓名</label>
+                                <input name="name" type="text" class="form-control" v-model='procname' id="name" placeholder="请输客户姓名">
                                 </div>
                             </td>
                             <td> 
                                 <div class="form-group">
-                                    <label for="exampleInputName2">性别</label>
-                                    <input name="exampleInputName2" type="text" class="form-control" v-model='prosex' id="exampleInputName2" placeholder="请输入性别">
+                                    <label for="gender">性别</label>
+                                    <input name="gender" type="text" class="form-control" v-model='prosex' id="gender" placeholder="请输入性别">
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td> 
                                 <div class="form-group">
-                                    <label for="exampleInputName3">身份证号</label>
-                                    <input name="exampleInputName3" type="text" class="form-control" v-model='prosid' id="exampleInputName3" placeholder="请输入身份证号">
+                                    <label for="idcard">身份证号</label>
+                                    <input name="idcard" type="text" class="form-control" v-model='prosid' id="idcard" placeholder="请输入身份证号">
                                 </div>
                             </td>
                             <td>  
                                 <div class="form-group">
-                                    <label for="exampleInputName4">银行卡号</label>
-                                    <input name="exampleInputName4" type="text" class="form-control" v-model='procard' id="exampleInputName4" placeholder="请输入银行卡号">
+                                    <label for="bankcard">银行卡号</label>
+                                    <input name="bankcard" type="text" class="form-control" v-model='procard' id="bankcard" placeholder="请输入银行卡号">
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td>  
                                 <div class="form-group">
-                                    <label for="exampleInputName5">保单号</label>
-                                    <input name="exampleInputName5" type="text" class="form-control" v-model='probd' id="exampleInputName5" placeholder="请输入保单号">
+                                    <label for="safecard">保单号</label>
+                                    <input name="safecard" type="text" class="form-control" v-model='probd' id="safecard" placeholder="请输入保单号">
                                 </div>
                             </td>
                             <td>
                                 <div class="form-group">
-                                    <label for="exampleInputName6">手机号</label>
-                                    <input name="exampleInputName6" type="text" class="form-control" v-model='prophone' id="exampleInputName6" placeholder="请输入手机号">
+                                    <label for="phone">手机号</label>
+                                    <input name="phone" type="text" class="form-control" v-model='prophone' id="phone" placeholder="请输入手机号">
                                 </div>
                             </td>
+
                         </tr>
                         <tr>
                             <td>
                                 <div class="form-group">
-                                    <label for="exampleInputName7">已参保产品</label>
-                                    <input name="exampleInputName7" type="text" class="form-control" v-model='procp' id="exampleInputName7" placeholder="请输入已参保产品">
+                                    <label for="product">已参保产品</label>
+                                    <input name="product" type="text" class="form-control" v-model='procp' id="product" placeholder="请输入已参保产品">
                                 </div>
                             </td>
                             <td>  
                                 <div class="form-group">
-                                    <label for="exampleInputName8">交费</label>
-                                    <input name="exampleInputName8" type="text" class="form-control" v-model='procharge' id="exampleInputName8" placeholder="请输入交费">
+                                    <label for="payment">交费</label>
+                                    <input name="payment" type="text" class="form-control" v-model='procharge' id="payment" placeholder="请输入交费">
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <div class="form-group">
-                                    <label for="exampleInputName9">年限</label>
-                                    <input name="exampleInputName9" type="text" class="form-control" v-model='proyear' id="exampleInputName9" placeholder="请输入年限">
+                                    <label for="paymentyear">年限</label>
+                                    <input name="paymentyear" type="text" class="form-control" v-model='proyear' id="paymentyear" placeholder="请输入年限">
                                 </div>
                             </td>
                             <td> 
                                 <div class="form-group">
-                                    <label for="exampleInputName10">保障期间</label>
-                                    <input name="exampleInputName10" type="text" class="form-control" v-model='protime' id="exampleInputName10" placeholder="请输入保障期间">
+                                    <label for="safeguard">保障期间</label>
+                                    <input name="safeguard" type="text" class="form-control" v-model='protime' id="safeguard" placeholder="请输入保障期间">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <label for="detail">备注</label>
+                                    <input name="detail" type="text" class="form-control" v-model='proyear' id="detail" placeholder="请输入备注信息">
                                 </div>
                             </td>
                         </tr>
@@ -368,6 +378,41 @@
                 }
             }
         })
+    </script>
+
+    <script type="text/javascript">
+        $("#addCustomer").click(function() {
+            $.ajax({
+                url: "/addCustomer",//要请求的服务器url
+                //这是一个对象，表示请求的参数，两个参数：method=ajax&val=xxx，服务器可以通过request.getParameter()来获取
+                //data:{method:"ajaxTest",val:value},
+                data: {
+                    name: $("#name").val(),
+                    gender: $("#gender").val(),
+                    idcard: $("#idcard").val(),
+                    bankcard: $("#bankcard").val(),
+                    safecard: $("#safecard").val(),
+                    phone: $("#phone").val(),
+                    product: $("#product").val(),
+                    payment: $("#payment").val(),
+                    paymentyear: $("#paymentyear").val(),
+                    safeguard: $("#safeguard").val(),
+                    detail: $("#detail").val(),
+                },
+                async: true,   //是否为异步请求
+                cache: false,  //是否缓存结果
+                type: "POST", //请求方式为POST
+                dataType: "json",   //服务器返回的数据是什么类型
+                success: function(result){  //这个方法会在服务器执行成功是被调用 ，参数result就是服务器返回的值(现在是json类型)
+                    if(result.message == "success"){
+                        window.location.href="/home";
+                    }
+                    else {
+                        alert(result.message);
+                    }
+                }
+            });
+    });
     </script>
 </body>
 </html>
