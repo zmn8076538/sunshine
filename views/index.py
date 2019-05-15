@@ -67,6 +67,7 @@ def add_customer():
     paymentyear = request.form['paymentyear']
     safeguard = request.form['safeguard']
     detail = request.form['detail']
+    print(userId)
     if add_customer_service.add_customer(userId,name,gender,phone,product,payment,paymentyear,safeguard,detail,idcard,bankcard,safecard):
         return jsonify({'message':'添加成功'})
     return jsonify({'message':'添加失败'})

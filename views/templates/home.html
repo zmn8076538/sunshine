@@ -124,7 +124,7 @@
                 <li @click='turn()'><i class="iconfont icon-mendian"></i>预约上门客户</li>
                 <li @click='turn()'><i class="iconfont icon-mendian"></i>已出单客户</li>
             </ul>
-            <div class="dow show">新建客户
+            <div class="dow show">
                 <form id="addCustomer" class="form-inline text-center" style="margin:15px;">
                     <table class="table-xj">
                         <tr>
@@ -387,7 +387,7 @@
                 //这是一个对象，表示请求的参数，两个参数：method=ajax&val=xxx，服务器可以通过request.getParameter()来获取
                 //data:{method:"ajaxTest",val:value},
                 data: {
-                    userId: document.cookie.split(";")[0].split("=")[1],
+                    userId: document.cookie.split(";")[1].split("=")[1],
                     name: $("#name").val(),
                     gender: $("#gender").val(),
                     idcard: $("#idcard").val(),
@@ -407,7 +407,16 @@
                 success: function(result){  //这个方法会在服务器执行成功是被调用 ，参数result就是服务器返回的值(现在是json类型)
                      alert(result.message);
                      $("#name").val("");
-
+                     $("#gender").val("");
+                     $("#idcard").val("");
+                     $("#bankcard").val("");
+                     $("#safecard").val("");
+                     $("#phone").val("");
+                     $("#product").val("");
+                     $("#payment").val("");
+                     $("#paymentyear").val("");
+                     $("#safeguard").val("");
+                     $("#detail").val("");
 
                 }
             });
