@@ -5,12 +5,14 @@ from services.login_service import LoginService
 from services.regist_service import RegistService
 from services.add_customer_service import AddCustomerService
 from services.get_customers_service import GetCustomersService
+from services.delete_customer_service import DeleteCustomerService
 
 
 login_service = LoginService()
 regist_service = RegistService()
 add_customer_service = AddCustomerService()
 get_customers_service = GetCustomersService()
+delete_customer_service = DeleteCustomerService()
 
 userid = None
 
@@ -74,6 +76,11 @@ def get_customers_not_contact():
     userId = request.form['userId']
     customers = get_customers_service.get_customers_not_contact(userId)
     return jsonify(customers)
+
+@app.route('/deleteCustomer/<string:customer_id>',methods=['GET'])
+def delete_customer(customer_id):
+    delete_customer_service.delete_customer(customer_id)
+    return render_template('home.html')
 
 
 

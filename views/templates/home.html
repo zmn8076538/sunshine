@@ -163,16 +163,15 @@
                 <div class="dow"> <!--未联系客户-->
                     <table class="table table-bordered text-center">
                         <thead>
-                            <td>客户姓名</td>
-                            <td>性别</td>
-                            <td>手机号</td>
-                        </thead>
-                        <tbody>
-                            <tr v-for='item in showlist'>
-                                <td>customers[0][0]</td>
-                                <td>xxxxx</td>
-                                <td>xxxxx</td>
+                            <tr>
+                                <td>客户姓名</td>
+                                <td>性别</td>
+                                <td>手机号</td>
+                                <td>操作</td>
                             </tr>
+                        </thead>
+                        <tbody id="target">
+
                         </tbody>
                     </table>
                 </div>
@@ -211,6 +210,7 @@
         }
         //添加客户ajax请求
         $("#add").click(function() {
+
             $.ajax({
                 url: "/addCustomer",//要请求的服务器url
                 //这是一个对象，表示请求的参数，两个参数：method=ajax&val=xxx，服务器可以通过request.getParameter()来获取
@@ -236,6 +236,7 @@
 
         //获取未联系客户
         $("#getCustomersNotContact").click(function() {
+            $("#target").html("")
             $.ajax({
                 url: "/getCustomers_contact",//要请求的服务器url
                 //这是一个对象，表示请求的参数，两个参数：method=ajax&val=xxx，服务器可以通过request.getParameter()来获取
@@ -251,7 +252,11 @@
                 type: "POST", //请求方式为POST
                 dataType: "json",   //服务器返回的数据是什么类型
                 success: function(customers){  //这个方法会在服务器执行成功是被调用 ，参数result就是服务器返回的值(现在是json类型)
-
+                        for(var i = 0; i < customers.length; i++){
+                        s = "<tr v-for='item in showlist'><td>" + customers[i][0] + "</td><td>" + customers[i][1] + "</td><td>" +
+                        customers[i][2] + "</td><td>" + "<a href=\"{{ url_for('delete_customer',customer_id="customers[i][3]")}}\">删除</a>" + "</td></tr>";
+                        $("#target").append(s);
+                        }
                 }
             });
         });
