@@ -4,11 +4,13 @@ from flask import request
 from services.login_service import LoginService
 from services.regist_service import RegistService
 from services.add_customer_service import AddCustomerService
+from services.get_customers_service import GetCustomersService
 
 
 login_service = LoginService()
 regist_service = RegistService()
 add_customer_service = AddCustomerService()
+get_customers_service = GetCustomersService()
 
 userid = None
 
@@ -59,10 +61,19 @@ def add_customer():
     name = request.form['name']
     gender = request.form['gender']
     phone = request.form['phone']
+    if gender == 'woman':
+        gender = '女'
+    else:
+        gender = '男'
     if add_customer_service.add_customer(userId,name,gender,phone):
         return jsonify({'message':'添加成功'})
     return jsonify({'message':'添加失败'})
 
+@app.route('/getCustomers_contact',methods=['POST'])
+def get_customers_not_contact():
+    userId = request.form['userId']
+    customers = get_customers_service.get_customers_not_contact(userId)
+    return jsonify(customers)
 
 
 

@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="http://at.alicdn.com/t/font_1047560_xq50ar43aqd.css">
+    <link rel="stylesheet" href="https://unpkg.com/vue-easytable/umd/css/index.css">
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <title>Document</title>
     <style>
@@ -100,6 +101,9 @@
         /* .table-xj td{
             margin-left: 20px;
         } */
+        .hover{
+            border: 2px solid red;
+        }
     </style>
 </head>
 <body>
@@ -114,287 +118,98 @@
             </div>
         </div>
         <div id="list-body">
-            <ul class="list-body-left">
-                <li class="changeli" @click='turn()'><i class="iconfont icon-renyuan"></i>新建客户</li>
-                <li @click='turn()'><i class="iconfont icon-shangpin"></i>未联系客户</li>
-                <li @click='turn()'><i class="iconfont icon-shangpin"></i>已联系客户</li>
-                <li @click='turn()'><i class="iconfont icon-geren"></i>已预约客户</li>
-                <li @click='turn()'><i class="iconfont icon-dizhi"></i>有印象客户</li>
-                <li @click='turn()'><i class="iconfont icon-mendian"></i>待确定预约时间客户</li>
-                <li @click='turn()'><i class="iconfont icon-mendian"></i>预约上门客户</li>
-                <li @click='turn()'><i class="iconfont icon-mendian"></i>已出单客户</li>
+            <ul id="ul1" class="list-body-left">
+                <li class="changeli" ><i class="iconfont icon-renyuan"></i>新建客户</li>
+                <li id="getCustomersNotContact" ><i class="iconfont icon-shangpin"></i>未联系客户</li>
+                <li><i class="iconfont icon-shangpin"></i>已联系客户</li>
+                <li><i class="iconfont icon-geren"></i>已预约客户</li>
+                <li><i class="iconfont icon-dizhi"></i>有印象客户</li>
+                <li><i class="iconfont icon-mendian"></i>待确定预约时间客户</li>
+                <li><i class="iconfont icon-mendian"></i>预约上门客户</li>
+                <li><i class="iconfont icon-mendian"></i>已出单客户</li>
             </ul>
-            <div class="dow show">
-                <form id="addCustomer" class="form-inline text-center" style="margin:15px;">
-                    <table class="table-xj">
-                        <tr>
-                            <td>
-                                <div class="form-group">
-                                <label for="name">客户姓名</label>
-                                <input name="name" type="text" class="form-control" v-model='procname' id="name" placeholder="请输客户姓名">
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="form-group">
-    <!--                                    <label for="gender">性别</label>-->
-    <!--                                    <input name="gender" type="text" class="form-control" v-model='prosex' id="gender" placeholder="请输入性别">-->
-                                    <label fro="gender">性别</label>
-                                    <select id="gender">
+            <div id="content">
+                <div class="dow">
+                    <form id="addCustomer" class="form-inline text-center" style="margin:15px;">
+                        <table class="table-xj">
+                            <tr>
+                                <td>
+                                    <label for="name">客户姓名</label>
+                                    <input name="name" type="text" class="form-control"  id="name" placeholder="请输客户姓名">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="gender" >性别</label>
+                                    <select name="gender" id="gender">
                                         <option value="man">男</option>
                                         <option value="woman">女</option>
                                     </select>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="form-group">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
                                     <label for="phone">手机号</label>
-                                    <input name="phone" type="text" class="form-control" v-model='prophone' id="phone" placeholder="请输入手机号">
-                                </div>
-                            </td>
-                        </tr>
-<!--                        <tr>-->
-<!--                            <td> -->
-<!--                                <div class="form-group">-->
-<!--                                    <label for="idcard">身份证号</label>-->
-<!--                                    <input name="idcard" type="text" class="form-control" v-model='prosid' id="idcard" placeholder="请输入身份证号">-->
-<!--                                </div>-->
-<!--                            </td>-->
-<!--                            <td>  -->
-<!--                                <div class="form-group">-->
-<!--                                    <label for="bankcard">银行卡号</label>-->
-<!--                                    <input name="bankcard" type="text" class="form-control" v-model='procard' id="bankcard" placeholder="请输入银行卡号">-->
-<!--                                </div>-->
-<!--                            </td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td>  -->
-<!--                                <div class="form-group">-->
-<!--                                    <label for="safecard">保单号</label>-->
-<!--                                    <input name="safecard" type="text" class="form-control" v-model='probd' id="safecard" placeholder="请输入保单号">-->
-<!--                                </div>-->
-<!--                            </td>-->
+                                    <input name="phone" type="text" class="form-control" id="phone" placeholder="请输入手机号">
+                                </td>
+                            </tr>
 
-
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td>-->
-<!--                                <div class="form-group">-->
-<!--                                    <label for="product">已参保产品</label>-->
-<!--                                    <input name="product" type="text" class="form-control" v-model='procp' id="product" placeholder="请输入已参保产品">-->
-<!--                                </div>-->
-<!--                            </td>-->
-<!--                            <td>  -->
-<!--                                <div class="form-group">-->
-<!--                                    <label for="payment">交费</label>-->
-<!--                                    <input name="payment" type="text" class="form-control" v-model='procharge' id="payment" placeholder="请输入交费">-->
-<!--                                </div>-->
-<!--                            </td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td>-->
-<!--                                <div class="form-group">-->
-<!--                                    <label for="paymentyear">年限</label>-->
-<!--                                    <input name="paymentyear" type="text" class="form-control" v-model='proyear' id="paymentyear" placeholder="请输入年限">-->
-<!--                                </div>-->
-<!--                            </td>-->
-<!--                            <td> -->
-<!--                                <div class="form-group">-->
-<!--                                    <label for="safeguard">保障期间</label>-->
-<!--                                    <input name="safeguard" type="text" class="form-control" v-model='protime' id="safeguard" placeholder="请输入保障期间">-->
-<!--                                </div>-->
-<!--                            </td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td>-->
-<!--                                <div class="form-group">-->
-<!--                                    <label for="detail">备注</label>-->
-<!--                                    <input name="detail" type="text" class="form-control" v-model='proyear' id="detail" placeholder="请输入备注信息">-->
-<!--                                </div>-->
-<!--                            </td>-->
-<!--                        </tr>-->
-                        <tr>
-                            <td><button id="add" type="button" class="btn btn-default" @click.prevent='add()'>添加</button></td>
-                        </tr>
+                            <tr>
+                                <td><button id="add" type="button" class="btn btn-default" >添加</button></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+                <div class="dow"> <!--未联系客户-->
+                    <table class="table table-bordered text-center">
+                        <thead>
+                            <td>客户姓名</td>
+                            <td>性别</td>
+                            <td>手机号</td>
+                        </thead>
+                        <tbody>
+                            <tr v-for='item in showlist'>
+                                <td>customers[0][0]</td>
+                                <td>xxxxx</td>
+                                <td>xxxxx</td>
+                            </tr>
+                        </tbody>
                     </table>
-                    <!-- <div class="form-group">
-                      <label for="exampleInputEmail2">Price</label>
-                      <input type="number" class="form-control"  v-model='proprice' id="exampleInputEmail2" placeholder="请输入商品价格">
-                    </div> -->
-                </form>
+                </div>
+                <div class="dow"> 未接电话、不来的客户</div>
+                <div class="dow"> 已约好哪天来</div>
+                <div class="dow"> 当时来了没出，后续可追</div>
+                <div class="dow"> 待确定预约时间客户</div>
+                <div class="dow"> 预约上门客户</div>
+                <div class="dow"> 已出单客户</div>
             </div>
-            <div class="dow"> 未联系客户
-                <table class="table table-bordered text-center">
-                    <thead>
-                        <td>客户姓名</td>
-                        <td>性别</td>
-                        <td>身份证号</td>
-                        <td>银行卡号</td>
-                        <td>保单号</td>
-                        <td>手机号</td>
-                        <td>已参保产品</td>
-                        <td>交费</td>
-                        <td>年限</td>
-                        <td>保障期间</td>
-                    </thead>
-                    <tbody>
-                        {% raw %}
-                        <tr v-for='item in showlist'>
-                            <td>{{ item.cname }}</td>
-                            <td>{{ item.sex }}</td>
-                            <td>{{ item.sid }}</td>
-                            <td>{{ item.card }}</td>
-                            <td>{{ item.bd }}</td>
-                            <td>{{ item.phone }}</td>
-                            <td>{{ item.cp }}</td>
-                            <td>{{ item.charge }}</td>
-                            <td>{{ item.year}}</td>
-                            <td>{{ item.time }}</td>
-                        </tr>
-                        {% endraw %}
-                        <!-- <tr>
-                            <td>a</td>
-                            <td>b</td>
-                            <td>c</td>
-                        </tr> -->
-                    </tbody>
-                </table>
-            </div>
-            <div class="dow"> 未接电话、不来的客户</div>
-            <div class="dow"> 已约好哪天来</div>
-            <div class="dow"> 当时来了没出，后续可追</div>
-            <div class="dow"> 待确定预约时间客户</div>
-            <div class="dow"> 预约上门客户</div>
-            <div class="dow">已出单客户</div>
         </div>
     </div>
-    <script src="vue.js"></script>
-    <script>
-        var vm=new Vue({
-            el:'#list',
-            data:{
-                productlist:[{
-                    cname:'xx',
-                    sex:'xx',
-                    sid:'xx',
-                    card:'xx',
-                    bd:'xx',
-                    phone:'xx',
-                    cp:'xx',
-                    charge:'xx',
-                    year:'xx',
-                    time:'xx'
-                },
-                // {
-                //     name:'yy',
-                //     price:9,
-                //     isred:false,
-                //     id:2
-                // },{
-                //     name:'zz',
-                //     price:10,
-                //     isred:false,
-                //     id:3
-                // }
-            ],
-            showlist:[
-                {
-                    cname:'xx',
-                    sex:'xx',
-                    sid:'xx',
-                    card:'xx',
-                    bd:'xx',
-                    phone:'xx',
-                    cp:'xx',
-                    charge:'xx',
-                    year:'xx',
-                    time:'xx'
-                },
-                // {
-                //     name:'yy',
-                //     price:9,
-                //     isred:false,
-                //     id:2
-                // },{
-                //     name:'zz',
-                //     price:10,
-                //     isred:false,
-                //     id:3
-                // }
-            ],
-            procname:'',
-            prosex:'',
-            prosid:'',
-            procard:'',
-            probd:'',
-            prophone:'',
-            procp:'',
-            procharge:'',
-            proyear:'',
-            protime:''
-            },
-            methods:{
-                turn(){
-                    var oDiv=document.getElementsByClassName('dow');
-                    var aLi=document.getElementsByTagName('li');
-                    for(var i=0;i<aLi.length;i++){
-                        aLi[i].index = i;
-                        aLi[i].onclick=function(){
-                            for(j=0;j<aLi.length;j++){
-                                aLi[j].className=' '
-                                oDiv[j].className='dow';
-                            }
-                            aLi[this.index].className='changeli';
-                            oDiv[this.index].className='dow show';
-                        }
 
-                    }
-                },
-                add(){
-                    this.productlist.push({
-                        name:this.procname,
-                        // price:Number.parseInt(this.proprice),
-                        // isred:false,
-                        // // id:1
-                        // id:Symbol()
-                        cname:this.procname,
-                    sex:this.prosex,
-                    sid:this.prosid,
-                    card:this.procard,
-                    bd:this.probd,
-                    phone:this.prophone,
-                    cp:this.procp,
-                    charge:this.procharge,
-                    year:this.proyear,
-                    time:this.protime
-                    });
-
-                    this.showlist=[...this.productlist];
-                    // this.proname='';
-                    // this.proprice='';
-                    this.procname='';
-                    this.prosex='';
-                    this.prosid='';
-                    this.procard='';
-                    this.probd='';
-                    this.prophone='';
-                    this.procp='';
-                    this.procharge='';
-                    this.proyear='';
-                    this.protime='';
-                }
-            }
-        })
-    </script>
     <script type="text/javascript">
+        var lis = document.getElementById("ul1").getElementsByTagName("li");
+        var divs = document.getElementById("content").getElementsByTagName("div");
+        for(var i=0; i<lis.length; i++){
+            lis[i].index = i;
+            lis[i].onclick = function(){
+                for(var j=0; j<lis.length; j++){
+                    lis[j].className = "";
+                }
+                this.className ="hover";
+                for(var i=0; i<divs.length; i++){
+                    divs[i].style.display="none";
+                }
+                divs[this.index].style.display = "block";
+            }
+        }
+
+
         var pre = document.cookie.split("userId=")[1];
         var arr = pre;
         if(pre.indexOf(";") != -1){
             arr = pre.split(";")[0];
         }
+        //添加客户ajax请求
         $("#add").click(function() {
             $.ajax({
                 url: "/addCustomer",//要请求的服务器url
@@ -405,15 +220,6 @@
                     name: $("#name").val(),
                     gender: $("#gender").val(),
                     phone: $("#phone").val()
-
-                    //idcard: $("#idcard").val(),
-                    //bankcard: $("#bankcard").val(),
-                    //safecard: $("#safecard").val(),
-                    //product: $("#product").val(),
-                    //payment: $("#payment").val(),
-                    //paymentyear: $("#paymentyear").val(),
-                    //safeguard: $("#safeguard").val(),
-                    //detail: $("#detail").val()
                 },
                 async: true,   //是否为异步请求
                 cache: false,  //是否缓存结果
@@ -424,10 +230,31 @@
                      $("#name").val("");
                      $("#gender").val("");
                      $("#phone").val("");
+                }
+            });
+        });
+
+        //获取未联系客户
+        $("#getCustomersNotContact").click(function() {
+            $.ajax({
+                url: "/getCustomers_contact",//要请求的服务器url
+                //这是一个对象，表示请求的参数，两个参数：method=ajax&val=xxx，服务器可以通过request.getParameter()来获取
+                //data:{method:"ajaxTest",val:value},
+                data: {
+                    userId: arr,
+                    //name: $("#name").val(),
+                    //gender: $("#gender").val(),
+                    //phone: $("#phone").val()
+                },
+                async: true,   //是否为异步请求
+                cache: false,  //是否缓存结果
+                type: "POST", //请求方式为POST
+                dataType: "json",   //服务器返回的数据是什么类型
+                success: function(customers){  //这个方法会在服务器执行成功是被调用 ，参数result就是服务器返回的值(现在是json类型)
 
                 }
             });
-    });
+        });
     </script>
 </body>
 </html>
