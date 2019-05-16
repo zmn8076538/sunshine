@@ -58,17 +58,8 @@ def add_customer():
     userId = request.form['userId']
     name = request.form['name']
     gender = request.form['gender']
-    idcard = request.form['idcard']
-    bankcard = request.form['bankcard']
-    safecard = request.form['safecard']
     phone = request.form['phone']
-    product = request.form['product']
-    payment = request.form['payment']
-    paymentyear = request.form['paymentyear']
-    safeguard = request.form['safeguard']
-    detail = request.form['detail']
-    print(userId)
-    if add_customer_service.add_customer(userId,name,gender,phone,product,payment,paymentyear,safeguard,detail,idcard,bankcard,safecard):
+    if add_customer_service.add_customer(userId,name,gender,phone):
         return jsonify({'message':'添加成功'})
     return jsonify({'message':'添加失败'})
 
