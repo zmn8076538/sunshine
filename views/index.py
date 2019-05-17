@@ -77,10 +77,11 @@ def get_customers_not_contact():
     customers = get_customers_service.get_customers_not_contact(userId)
     return jsonify(customers)
 
-@app.route('/deleteCustomer/<string:customer_id>',methods=['GET'])
-def delete_customer(customer_id):
+@app.route('/deleteCustomer',methods=['POST'])
+def delete_customer():
+    customer_id = request.form['customer_id']
     delete_customer_service.delete_customer(customer_id)
-    return render_template('home.html')
+    return jsonify({"message":"success"})
 
 
 

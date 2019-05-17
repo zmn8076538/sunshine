@@ -117,7 +117,7 @@
                 <!-- <h6>当前用户：小UU</h6> -->
             </div>
         </div>
-        <div id="list-body">
+        <div id="list-body" >
             <ul id="ul1" class="list-body-left">
                 <li class="changeli" ><i class="iconfont icon-renyuan"></i>新建客户</li>
                 <li id="getCustomersNotContact" ><i class="iconfont icon-shangpin"></i>未联系客户</li>
@@ -128,7 +128,7 @@
                 <li><i class="iconfont icon-mendian"></i>预约上门客户</li>
                 <li><i class="iconfont icon-mendian"></i>已出单客户</li>
             </ul>
-            <div id="content">
+            <div id="content" >
                 <div class="dow">
                     <form id="addCustomer" class="form-inline text-center" style="margin:15px;">
                         <table class="table-xj">
@@ -164,6 +164,7 @@
                     <table class="table table-bordered text-center">
                         <thead>
                             <tr>
+                                <td>序号</td>
                                 <td>客户姓名</td>
                                 <td>性别</td>
                                 <td>手机号</td>
@@ -210,7 +211,6 @@
         }
         //添加客户ajax请求
         $("#add").click(function() {
-
             $.ajax({
                 url: "/addCustomer",//要请求的服务器url
                 //这是一个对象，表示请求的参数，两个参数：method=ajax&val=xxx，服务器可以通过request.getParameter()来获取
@@ -243,23 +243,46 @@
                 //data:{method:"ajaxTest",val:value},
                 data: {
                     userId: arr,
-                    //name: $("#name").val(),
-                    //gender: $("#gender").val(),
-                    //phone: $("#phone").val()
                 },
                 async: true,   //是否为异步请求
                 cache: false,  //是否缓存结果
                 type: "POST", //请求方式为POST
                 dataType: "json",   //服务器返回的数据是什么类型
                 success: function(customers){  //这个方法会在服务器执行成功是被调用 ，参数result就是服务器返回的值(现在是json类型)
-                        for(var i = 0; i < customers.length; i++){
-                        s = "<tr v-for='item in showlist'><td>" + customers[i][0] + "</td><td>" + customers[i][1] + "</td><td>" +
-                        customers[i][2] + "</td><td>" + "<a href=\"{{ url_for('delete_customer',customer_id="customers[i][3]")}}\">删除</a>" + "</td></tr>";
-                        $("#target").append(s);
-                        }
+                    for(var i = 0; i < customers.length; i++){
+                    s = "<tr v-for='item in showlist'><td>" + (i+1) + "</td><td>" + customers[i][0] + "</td><td>" + customers[i][1] + "</td><td>" +
+                    customers[i][2] + "</td><td>" + "<button class=\"btnclass\" name=\"" + customers[i][3] +"\">删除</button>" + "</td></tr>";
+                    $("#target").append(s);
+                    }
+                    delete1();
                 }
             });
         });
+
+        function delete1(){
+            //点击删除，弹confirm对话框
+            $(".btnclass").click(function() {
+                if(confirm("确定删除此客户吗？")){
+                    var customerId = $(this).attr("name");
+                    $.ajax({
+                        url: "/deleteCustomer",
+                        data: {
+                            userId: arr,
+                            customer_id : customerId
+                        },
+                        async: true,   //是否为异步请求
+                        cache: false,  //是否缓存结果
+                        type: "POST", //请求方式为POST
+                        dataType: "json",   //服务器返回的数据是什么类型
+                        success: function(result){  //这个方法会在服务器执行成功是被调用 ，参数result就是服务器返回的值(现在是json类型)
+                            if(result.message == "success"){
+                                location.reload()
+                            }
+                        }
+                    });
+                }
+            });
+        }
     </script>
 </body>
 </html>
