@@ -60,21 +60,62 @@ def home():
 @app.route('/addCustomer',methods=['POST'])
 def add_customer():
     userId = request.form['userId']
-    name = request.form['name']
-    gender = request.form['gender']
+    insurename = request.form['insurename']
+    insuregender = request.form['insuregender']
+    insureidcard = request.form['insureidcard']
+    byinsurename = request.form['byinsurename']
+    byinsuregender = request.form['byinsuregender']
+    byidcard = request.form['byidcard']
+    relationship = request.form['relationship']
     phone = request.form['phone']
-    if gender == 'woman':
-        gender = '女'
+    address = request.form['address']
+    bankcard = request.form['bankcard']
+    issuename = request.form['issuename']
+    safecard = request.form['safecard']
+    paymentperiod = request.form['paymentperiod']
+    safeguardperiod = request.form['safeguardperiod']
+    effectiveandexpirationdate = request.form['effectiveandexpirationdate']
+    ordertime = request.form['ordertime']
+    notdealreason = request.form['notdealreason']
+    notorderreason = request.form['notorderreason']
+    shareperson = request.form['shareperson']
+    detail = request.form['detail']
+    status = request.form['status']
+
+    #客户状态
+    if status == 'alreadyorder':
+        status = 1
+    elif status == 'impressive':
+        status = 2
+    elif status == 'delayordertime':
+        status = 3
+    elif status == 'visit':
+        status = 4
     else:
-        gender = '男'
-    if add_customer_service.add_customer(userId,name,gender,phone):
+        status = 5
+
+    #投被保险人关系
+    if relationship == 'self':
+        relationship = 1
+    elif relationship == 'marriage':
+        relationship = 2
+    elif relationship == 'fatherdaughter':
+        relationship = 3
+    elif relationship == 'fatherchild':
+        relationship = 4
+    elif relationship == 'motherdaughter':
+        relationship = 5
+    else:
+        relationship = 6
+
+    if add_customer_service.add_customer(userId,insurename,insuregender,insureidcard,byinsurename,byinsuregender,byidcard,relationship,phone,address,bankcard,issuename,safecard,paymentperiod,safeguardperiod,effectiveandexpirationdate,ordertime,notdealreason,notorderreason,shareperson,detail,status):
         return jsonify({'message':'添加成功'})
     return jsonify({'message':'添加失败'})
 
-@app.route('/getCustomers_contact',methods=['POST'])
+@app.route('/getCustomers_hasOrder',methods=['POST'])
 def get_customers_not_contact():
     userId = request.form['userId']
-    customers = get_customers_service.get_customers_not_contact(userId)
+    customers = get_customers_service.get_customers_has_order(userId)
     return jsonify(customers)
 
 @app.route('/deleteCustomer',methods=['POST'])

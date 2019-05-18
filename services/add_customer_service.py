@@ -4,5 +4,5 @@ class AddCustomerService:
 
     add_cutomer_dao = AddCustomerDao()
 
-    def add_customer(self,user_id,customer_name,customer_gender,customer_phonenumber):
-        return self.add_cutomer_dao.add_customer(user_id,customer_name,customer_gender,customer_phonenumber)
+    def add_customer(self,userId,insurename,insuregender,insureidcard,byinsurename,byinsuregender,byidcard,relationship,phone,address,bankcard,issuename,safecard,paymentperiod,safeguardperiod,effectiveandexpirationdate,ordertime,notdealreason,notorderreason,shareperson,detail,status):
+        return self.add_cutomer_dao.add_customer(userId,insurename,insuregender,insureidcard,byinsurename,byinsuregender,byidcard,relationship,phone,address,bankcard,issuename,safecard,paymentperiod,safeguardperiod,effectiveandexpirationdate,ordertime,notdealreason,notorderreason,shareperson,detail,status)

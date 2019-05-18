@@ -92,6 +92,7 @@
             background: rgb(231, 230, 230);
             height:80%;
             width: 80%;
+            overflow-y:auto;
             display: none;
             /* border-top: 1px solid black; */
         }
@@ -120,9 +121,7 @@
         <div id="list-body" >
             <ul id="ul1" class="list-body-left">
                 <li class="changeli" ><i class="iconfont icon-renyuan"></i>新建客户</li>
-                <li id="getCustomersNotContact" ><i class="iconfont icon-shangpin"></i>未联系客户</li>
-                <li><i class="iconfont icon-shangpin"></i>已联系客户</li>
-                <li><i class="iconfont icon-geren"></i>已预约客户</li>
+                <li id="getCustomersHasOrder" ><i class="iconfont icon-shangpin"></i>已预约客户</li>
                 <li><i class="iconfont icon-dizhi"></i>有印象客户</li>
                 <li><i class="iconfont icon-mendian"></i>待确定预约时间客户</li>
                 <li><i class="iconfont icon-mendian"></i>预约上门客户</li>
@@ -134,23 +133,151 @@
                         <table class="table-xj">
                             <tr>
                                 <td>
-                                    <label for="name">客户姓名</label>
-                                    <input name="name" type="text" class="form-control"  id="name" placeholder="请输客户姓名">
+                                    <label for="insurename">投保人姓名</label>
+                                    <input name="insurename" type="text" class="form-control"  id="insurename" placeholder="请输入投保人姓名">
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <label for="gender" >性别</label>
-                                    <select name="gender" id="gender">
-                                        <option value="man">男</option>
-                                        <option value="woman">女</option>
+                                    <label >投保人性别</label>
+                                    <input type="radio" checked="checked" name="insuregender" value="male" />男
+                                    <input type="radio" name="insuregender" value="female" />女
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <label for="insureidcard">投保人身份证号</label>
+                                    <input name="insureidcard" type="text" class="form-control" id="insureidcard" placeholder="请输入投保人身份证号">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="byinsurename">被保险人姓名</label>
+                                    <input name="byinsurename" type="text" class="form-control"  id="byinsurename" placeholder="请输入被保险人姓名">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label >被保险人性别</label>
+                                    男
+                                    <input type="radio" checked="checked" name="byinsuregender" value="male" />
+                                    女
+                                    <input type="radio" name="byinsuregender" value="female" />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <label for="byidcard">被保险人身份证号</label>
+                                    <input name="byidcard" type="text" class="form-control" id="byidcard" placeholder="请输入被保险人身份证号">
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <label for="relationship">投被保险人关系</label>
+                                    <select id="relationship">
+                                        <option value = "self">本人</option>
+                                        <option value = "marriage">夫妻</option>
+                                        <option value = "fatherdaughter">父女</option>
+                                        <option value = "fatherchild">父子</option>
+                                        <option value = "motherdaughter">母女</option>
+                                        <option value = "motherchild">母子</option>
                                     </select>
                                 </td>
                             </tr>
+
                             <tr>
                                 <td>
                                     <label for="phone">手机号</label>
                                     <input name="phone" type="text" class="form-control" id="phone" placeholder="请输入手机号">
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <label for="address">地址</label>
+                                    <input name="address" type="text" class="form-control" id="address" placeholder="请输入地址">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="bankcard">银行卡</label>
+                                    <input name="bankcard" type="text" class="form-control" id="bankcard" placeholder="请输入银行卡号">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="issuename">产品名称</label>
+                                    <input name="issuename" type="text" class="form-control" id="issuename" placeholder="请输入产品名称">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="safecard">保单号</label>
+                                    <input name="safecard" type="text" class="form-control" id="safecard" placeholder="请输入保单号">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="paymentperiod">交费期间</label>
+                                    <input name="paymentperiod" type="text" class="form-control" id="paymentperiod" placeholder="请输入交费期间">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="safeguardperiod">保障期间</label>
+                                    <input name="safeguardperiod" type="text" class="form-control" id="safeguardperiod" placeholder="请输入保障期间">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="effectiveandexpirationdate">保单生效日至截止日</label>
+                                    <input name="effectiveandexpirationdate" type="text" class="form-control" id="effectiveandexpirationdate" placeholder="请输入保单生效日至截止日">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="ordertime">已预约时间</label>
+                                    <input name="ordertime" type="text" class="form-control" id="ordertime" placeholder="请输入已预约时间">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="notdealreason">未出单原因</label>
+                                    <input name="notdealreason" type="text" class="form-control" id="notdealreason" placeholder="请输入已预约时间">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="notorderreason">未约时间原因</label>
+                                    <input name="notorderreason" type="text" class="form-control" id="notorderreason" placeholder="请输入未约时间原因">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="shareperson">展业人员</label>
+                                    <input name="shareperson" type="text" class="form-control" id="shareperson" placeholder="请输入展业人员">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="detail">备注</label>
+                                    <input name="detail" type="text" class="form-control" id="detail" placeholder="请输入备注信息">
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <label for="status">客户状态</label>
+                                    <select id="status">
+                                        <option value = "alreadyorder">已预约</option>
+                                        <option value = "impressive">有印象</option>
+                                        <option value = "delayordertime">待确定预约时间</option>
+                                        <option value = "visit">预约上门</option>
+                                        <option value = "deal">已经出单</option>
+                                    </select>
                                 </td>
                             </tr>
 
@@ -160,14 +287,15 @@
                         </table>
                     </form>
                 </div>
-                <div class="dow"> <!--未联系客户-->
+                <div class="dow"> <!--已经预约客户-->
                     <table class="table table-bordered text-center">
                         <thead>
                             <tr>
                                 <td>序号</td>
-                                <td>客户姓名</td>
+                                <td>投保人姓名</td>
                                 <td>性别</td>
                                 <td>手机号</td>
+                                <td>已预约时间</td>
                                 <td>操作</td>
                             </tr>
                         </thead>
@@ -176,12 +304,85 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="dow"> 未接电话、不来的客户</div>
-                <div class="dow"> 已约好哪天来</div>
-                <div class="dow"> 当时来了没出，后续可追</div>
-                <div class="dow"> 待确定预约时间客户</div>
-                <div class="dow"> 预约上门客户</div>
-                <div class="dow"> 已出单客户</div>
+                <div class="dow"> <!--有印象客户-->
+                    <table class="table table-bordered text-center">
+                        <thead>
+                            <tr>
+                                <td>序号</td>
+                                <td>投保人姓名</td>
+                                <td>性别</td>
+                                <td>手机号</td>
+                                <td>未出单原因</td>
+                                <td>操作</td>
+                            </tr>
+                        </thead>
+                        <tbody >
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="dow"> <!--待确定预约时间-->
+                    <table class="table table-bordered text-center">
+                        <thead>
+                            <tr>
+                                <td>序号</td>
+                                <td>投保人姓名</td>
+                                <td>性别</td>
+                                <td>手机号</td>
+                                <td>未约时间原因</td>
+                                <td>操作</td>
+                            </tr>
+                        </thead>
+                        <tbody >
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="dow"> <!--预约上门-->
+                    <table class="table table-bordered text-center">
+                        <thead>
+                            <tr>
+                                <td>序号</td>
+                                <td>投保人姓名</td>
+                                <td>性别</td>
+                                <td>手机号</td>
+                                <td>地址</td>
+                                <td>操作</td>
+                            </tr>
+                        </thead>
+                        <tbody >
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="dow"> <!--已出单-->
+                    <table class="table table-bordered text-center">
+                        <thead>
+                            <tr>
+                                <td>序号</td>
+                                <td>投保人姓名</td>
+                                <td>投保人性别</td>
+                                <td>投保人身份证号</td>
+                                <td>被保险人姓名</td>
+                                <td>被保险人性别</td>
+                                <td>被保险人身份证号</td>
+                                <td>手机号</td>
+                                <td>银行卡</td>
+                                <td>地址</td>
+                                <td>产品名称</td>
+                                <td>保单号</td>
+                                <td>交费期间</td>
+                                <td>保障期间</td>
+                                <td>保单生效日至截止日</td>
+                                <td>展业人员</td>
+                                <td>操作</td>
+                            </tr>
+                        </thead>
+                        <tbody >
+
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -217,9 +418,27 @@
                 //data:{method:"ajaxTest",val:value},
                 data: {
                     userId: arr,
-                    name: $("#name").val(),
-                    gender: $("#gender").val(),
-                    phone: $("#phone").val()
+                    insurename: $("#insurename").val(),
+                    insuregender: $("input[name='insuregender']:checked").val(),
+                    insureidcard: $("#insureidcard").val(),
+                    byinsurename: $("#byinsurename").val(),
+                    byinsuregender: $("input[name='byinsuregender']:checked").val(),
+                    byidcard: $("#byidcard").val(),
+                    relationship: $("#relationship").val(),
+                    phone: $("#phone").val(),
+                    address: $("#address").val(),
+                    bankcard: $("#bankcard").val(),
+                    issuename: $("#issuename").val(),
+                    safecard: $("#safecard").val(),
+                    paymentperiod: $("#paymentperiod").val(),
+                    safeguardperiod: $('#safeguardperiod').val(),
+                    effectiveandexpirationdate: $("#effectiveandexpirationdate").val(),
+                    ordertime: $("#ordertime").val(),
+                    notdealreason: $("#notdealreason").val(),
+                    notorderreason: $("#notorderreason").val(),
+                    shareperson: $("#shareperson").val(),
+                    detail: $("#detail").val(),
+                    status: $("#status").val()
                 },
                 async: true,   //是否为异步请求
                 cache: false,  //是否缓存结果
@@ -227,18 +446,33 @@
                 dataType: "json",   //服务器返回的数据是什么类型
                 success: function(result){  //这个方法会在服务器执行成功是被调用 ，参数result就是服务器返回的值(现在是json类型)
                      alert(result.message);
-                     $("#name").val("");
-                     $("#gender").val("");
+                     $("#insurename").val("");
+                     $("#insureidcard").val("");
+                     $("#byinsurename").val("");
+                     $("#byidcard").val("");
+                     $("#relationship").val("");
                      $("#phone").val("");
+                     $("#address").val("");
+                     $("#bankcard").val("");
+                     $("#issuename").val("");
+                     $("#safecard").val("");
+                     $("#paymentperiod").val("");
+                     $("#safeguardperiod").val("");
+                     $("#effectiveandexpirationdate").val("");
+                     $("#ordertime").val("");
+                     $("#notdealreason").val("");
+                     $("#notorderreason").val("");
+                     $("#shareperson").val("");
+                     $("#detail").val("");
                 }
             });
         });
 
         //获取未联系客户
-        $("#getCustomersNotContact").click(function() {
+        $("#getCustomersHasOrder").click(function() {
             $("#target").html("")
             $.ajax({
-                url: "/getCustomers_contact",//要请求的服务器url
+                url: "/getCustomers_hasOrder",//要请求的服务器url
                 //这是一个对象，表示请求的参数，两个参数：method=ajax&val=xxx，服务器可以通过request.getParameter()来获取
                 //data:{method:"ajaxTest",val:value},
                 data: {
