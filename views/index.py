@@ -124,5 +124,29 @@ def delete_customer():
     delete_customer_service.delete_customer(customer_id)
     return jsonify({"message":"success"})
 
+@app.route('/get_customers_impressive',methods=['POST'])
+def get_customers_impressive():
+    userId = request.form['userId']
+    customers = get_customers_service.get_customers_impressive(userId)
+    return jsonify(customers)
+
+@app.route('/get_customers_delayordertime',methods=['POST'])
+def get_customers_delayordertime():
+    userId = request.form['userId']
+    customers = get_customers_service.get_customers_delayordertime(userId)
+    return jsonify(customers)
+
+@app.route('/get_customers_visit',methods=['POST'])
+def get_customers_visit():
+    userId = request.form['userId']
+    customers = get_customers_service.get_customers_visit(userId)
+    return jsonify(customers)
+
+@app.route('/get_customers_deal',methods=['POST'])
+def get_customers_deal():
+    userId = request.form['userId']
+    customers = get_customers_service.get_customers_deal(userId)
+    return jsonify(customers)
+
 
 
