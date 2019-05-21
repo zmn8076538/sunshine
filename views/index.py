@@ -34,7 +34,7 @@ def login():
         userid = login_service.login_get_userid(username)
         return jsonify({'message':'success','userId':userid})
     else:
-        return jsonify({'message':'用户或密码错误'})
+        return jsonify({'message':'用户名或密码错误'})
 
 @app.route('/regist',methods=['POST'])
 def regist():
