@@ -12,22 +12,33 @@
             margin: 0;
             padding: 0;
         }
+        .bg{
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url(../imgs/1.jpg);
+        }
         #all{
             width: 300px;
             height: 220px;
             /* background: yellow; */
-            border:1px solid rgb(190, 189, 189);
+            border:3px solid rgb(207, 223, 223);
             border-radius: 10px;
             position: absolute;
             left: 50%;
             top: 50%;
             transform: translate(-50%,-50%);
+            /* transform: translateY(-50%); */
+           
         }
         #dl{
-            width: 300px;
+            width: 294px;
             height: 50px;
             /* background: red; */
             border-bottom:1px dotted rgb(184, 176, 176);
+            /* background: whitesmoke; */ background: rgb(207, 223, 223);
         }
         #dl h4{
             text-align: center;
@@ -36,6 +47,7 @@
         }
         #nr {
             padding:20px;
+            /* background: rgb(181, 194, 194); */
         }
     
         #nr .btn-dl{
@@ -47,27 +59,28 @@
     </style>
 </head>
 <body>
+    <div class="bg">
     <div id="all">
-        <div id="dl">
-            <h4>登录</h4>
-        </div>
-        <div id="nr">
-<!--            <form method="post" action="">-->
-                <div class="form-group">
-                <label for="username" stype="display:inline;">账号：</label>
-                <input name="username" type="text" class="form-control" id="username" style="display:inline;width:200px;"autocomplete="off" />
-                </div>
-                <div class="form-group">
-                    <label for="password" style="display:inline;">密码：</label>
-                    <input name="password" type="password" class="form-control" id="password" style="display:inline;width:200px;"autocomplete="off" />
-                </div>
-                <a href="/regist_index">没有账号？点击注册</a>
-                <!-- <button type="submit" class="btn btn-primary btn-zc">注册</button> -->
-                <button type="submit" id="login" class="btn btn-primary btn-dl">登录</button>
-<!--            </form>-->
+            <div id="dl">
+                <h4>登录</h4>
+            </div>
+            <div id="nr">
+    <!--            <form method="post" action="">-->
+                    <div class="form-group">
+                    <label for="username" stype="display:inline;">账号：</label>
+                    <input name="username" type="text" class="form-control" id="username" style="display:inline;width:200px;"autocomplete="off" />
+                    </div>
+                    <div class="form-group">
+                        <label for="password" style="display:inline;">密码：</label>
+                        <input name="password" type="password" class="form-control" id="password" style="display:inline;width:200px;"autocomplete="off" />
+                    </div>
+                    <a href="/regist_index">没有账号？点击注册</a>
+                    <!-- <button type="submit" class="btn btn-primary btn-zc">注册</button> -->
+                    <button type="submit" id="login" class="btn btn-primary btn-dl">登录</button>
+    <!--            </form>-->
+            </div>
         </div>
     </div>
-
 </body>
 <script type="text/javascript">
     $("#login").click(function() {

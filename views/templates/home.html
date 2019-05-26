@@ -11,6 +11,20 @@
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <title>Document</title>
     <style>
+        body:before {
+        content: "";
+        position: fixed;
+        top: -10px;
+        left: 0;
+        width: 100%;
+        height: 10px;
+
+        -webkit-box-shadow: 0px 0px 10px rgba(0,0,0,.8);
+        -moz-box-shadow: 0px 0px 10px rgba(0,0,0,.8);
+        box-shadow: 0px 0px 10px rgba(0,0,0,.8);
+
+        z-index: 100;
+        }
         *{
             margin: 0;
             padding: 0;
@@ -18,7 +32,7 @@
         #list{
             /* width: 100%;
             height: 100%; */
-            /* background: red; */
+            background: url(../imgs/3.jpg);
             position: absolute;
             left: 0;
             top: 0;
@@ -40,56 +54,56 @@
             width: 20%;
             height: 100%;
             float: left;
-            background: rgb(49, 59, 117);
+            /* background: rgb(49, 59, 117); */
         }
         #list-head .list-head-right{
             width: 80%;
             height: 100%;
-            background: rgb(211, 214, 212);
+            /* background: rgb(211, 214, 212); */
             float: right;
         }
         #list-head .list-head-left h2{
             line-height: 8rem;
             text-align: center;
             /* font-size: 4rem; */
-            color: white;
+           
         }
         #list-head .list-head-right h2{
             line-height: 8rem;
             margin-left: 1rem;
             /* margin-top: 35px; */
             
-            color: rgb(92, 87, 87);
+            
         }
         #list-head .list-head-right h6{
             line-height: 8rem; 
             margin-left: 1rem;
             /* margin-top: 30px; */
-            color: rgb(92, 87, 87);
+            color: rgb(27, 25, 25);
         }
         #list-body{
             width: 20%;
             height: 80%;
-            background: rgb(78, 95, 105);
+            /* background: rgb(78, 95, 105); */
             /* border-top: 1px solid black; */
         }
         #list-body .list-body-left li{
             list-style: none;
             height: 4.5rem;
-            color: aliceblue;
+            color: rgb(27, 28, 29);
             /* margin-left: 20px; */
             line-height: 4rem;
             text-align: center;
             cursor: pointer;
         }
-        #list-body .list-body-left li.changeli{
+        /* #list-body .list-body-left li.changeli{
             background:rgb(43, 53, 59);
-        }
+        } */
         #list-body .dow{
             position: absolute;
             right: 0px;
             top:10.5rem;
-            background: rgb(231, 230, 230);
+            /* background: rgb(231, 230, 230); */
             height:80%;
             width: 80%;
             overflow-y:auto;
@@ -103,7 +117,60 @@
             margin-left: 20px;
         } */
         .hover{
-            border: 2px solid red;
+            background:rgba(118, 173, 146, 0.3);
+        }
+        .num1,.num2{
+            line-height: 8rem;
+            text-align: center;
+            font-size: 25px;
+        --interval: 5s;
+        display: block;
+        text-shadow: 
+            0 0 10px var(--color1),
+            0 0 20px var(--color2),
+            0 0 40px var(--color3),
+            0 0 80px var(--color4);
+        will-change: filter, color;
+        filter: saturate(60%);
+        animation: flicker steps(100) var(--interval) 1s infinite;
+        color: rgb(226, 233, 223);
+        --color1: rgb(157, 199, 141);
+        --color2: rgb(53, 121, 50);
+        --color3: rgb(40, 77, 46);
+        --color4: rgb(19, 39, 24);
+        font-family: Londrina Outline;
+        }
+        /* .num2{
+            line-height: 8rem;
+            text-align: center;
+            font-size: 25px;
+        --interval: 5s;
+        display: block;
+        text-shadow: 
+            0 0 10px var(--color1),
+            0 0 20px var(--color2),
+            0 0 40px var(--color3),
+            0 0 80px var(--color4);
+        will-change: filter, color;
+        filter: saturate(60%);
+        animation: flicker steps(100) var(--interval) 1s infinite;
+        color: rgb(37, 59, 28);
+        --color1: rgb(208, 238, 139);
+        --color2: rgb(230, 238, 158);
+        --color3: rgb(113, 114, 68);
+        --color4: rgb(172, 184, 129);
+  font-family: Kumar One Outline;
+} */
+
+/* x-sign:nth-of-type(4) {
+  color: lightyellow;
+  --color1: gold;
+        } */
+        @keyframes flicker {
+        50% {
+            color: white;
+            filter: saturate(200%) hue-rotate(20deg);
+        }
         }
     </style>
 </head>
@@ -111,10 +178,13 @@
     <div id="list">
         <div id="list-head">
             <div class="list-head-left">
-                <h2>客户数据管理系统</h2>
+                <!-- <h2>客户数据管理系统</h2> -->
+                <h2 class="num1">
+                    客户数据管理系统
+                </h2>
             </div>
             <div class="list-head-right">
-                <h2>多打电话多出单，没事别老玩手机</h2>
+                <h2 class="num2">多打电话多出单，没事别老玩手机</h2>
                 <!-- <h6>当前用户：小UU</h6> -->
             </div>
         </div>
@@ -130,16 +200,20 @@
             <div id="content" >
                 <div class="dow">
                     <form id="addCustomer" class="form-inline text-center" style="margin:15px;">
-                        <table class="table-xj">
+                        <table class="table-xj table table-bordered table-striped" style="width: 800px;">
                             <tr>
                                 <td>
                                     <label for="insurename">投保人姓名</label>
+                                </td>
+                                <td>
                                     <input name="insurename" type="text" class="form-control"  id="insurename" placeholder="请输入投保人姓名">
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <label >投保人性别</label>
+                                </td>
+                                <td>
                                     <input type="radio" checked="checked" name="insuregender" value="male" />男
                                     <input type="radio" name="insuregender" value="female" />女
                                 </td>
@@ -148,18 +222,24 @@
                             <tr>
                                 <td>
                                     <label for="insureidcard">投保人身份证号</label>
+                                </td>
+                                <td>
                                     <input name="insureidcard" type="text" class="form-control" id="insureidcard" placeholder="请输入投保人身份证号">
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <label for="byinsurename">被保险人姓名</label>
+                                </td>
+                                <td>
                                     <input name="byinsurename" type="text" class="form-control"  id="byinsurename" placeholder="请输入被保险人姓名">
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <label >被保险人性别</label>
+                                </td>
+                                <td>
                                     男
                                     <input type="radio" checked="checked" name="byinsuregender" value="male" />
                                     女
@@ -170,6 +250,8 @@
                             <tr>
                                 <td>
                                     <label for="byidcard">被保险人身份证号</label>
+                                </td>
+                                <td>
                                     <input name="byidcard" type="text" class="form-control" id="byidcard" placeholder="请输入被保险人身份证号">
                                 </td>
                             </tr>
@@ -177,6 +259,8 @@
                             <tr>
                                 <td>
                                     <label for="relationship">投被保险人关系</label>
+                                </td>
+                                <td>
                                     <select id="relationship">
                                         <option value = "self">本人</option>
                                         <option value = "marriage">夫妻</option>
@@ -191,6 +275,8 @@
                             <tr>
                                 <td>
                                     <label for="phone">手机号</label>
+                                </td>
+                                <td>
                                     <input name="phone" type="text" class="form-control" id="phone" placeholder="请输入手机号">
                                 </td>
                             </tr>
@@ -198,72 +284,96 @@
                             <tr>
                                 <td>
                                     <label for="address">地址</label>
+                                </td>
+                                <td>
                                     <input name="address" type="text" class="form-control" id="address" placeholder="请输入地址">
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <label for="bankcard">银行卡</label>
+                                </td>
+                                <td>
                                     <input name="bankcard" type="text" class="form-control" id="bankcard" placeholder="请输入银行卡号">
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <label for="issuename">产品名称</label>
+                                </td>
+                                <td>
                                     <input name="issuename" type="text" class="form-control" id="issuename" placeholder="请输入产品名称">
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <label for="safecard">保单号</label>
+                                </td>
+                                <td>
                                     <input name="safecard" type="text" class="form-control" id="safecard" placeholder="请输入保单号">
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <label for="paymentperiod">交费期间</label>
+                                </td>
+                                <td>
                                     <input name="paymentperiod" type="text" class="form-control" id="paymentperiod" placeholder="请输入交费期间">
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <label for="safeguardperiod">保障期间</label>
+                                </td>
+                                <td>
                                     <input name="safeguardperiod" type="text" class="form-control" id="safeguardperiod" placeholder="请输入保障期间">
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <label for="effectiveandexpirationdate">保单生效日至截止日</label>
+                                </td>
+                                <td>
                                     <input name="effectiveandexpirationdate" type="text" class="form-control" id="effectiveandexpirationdate" placeholder="请输入保单生效日至截止日">
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <label for="ordertime">已预约时间</label>
+                                </td>
+                                <td>
                                     <input name="ordertime" type="text" class="form-control" id="ordertime" placeholder="请输入已预约时间">
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <label for="notdealreason">未出单原因</label>
+                                </td>
+                                <td>
                                     <input name="notdealreason" type="text" class="form-control" id="notdealreason" placeholder="请输入已预约时间">
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <label for="notorderreason">未约时间原因</label>
+                                </td>
+                                <td>
                                     <input name="notorderreason" type="text" class="form-control" id="notorderreason" placeholder="请输入未约时间原因">
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <label for="shareperson">展业人员</label>
+                                </td>
+                                <td>
                                     <input name="shareperson" type="text" class="form-control" id="shareperson" placeholder="请输入展业人员">
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <label for="detail">备注</label>
+                                </td>
+                                <td>
                                     <input name="detail" type="text" class="form-control" id="detail" placeholder="请输入备注信息">
                                 </td>
                             </tr>
@@ -271,6 +381,8 @@
                             <tr>
                                 <td>
                                     <label for="status">客户状态</label>
+                                </td>
+                                <td>
                                     <select id="status">
                                         <option value = "alreadyorder">已预约</option>
                                         <option value = "impressive">有印象</option>
@@ -282,13 +394,13 @@
                             </tr>
 
                             <tr>
-                                <td><button id="add" type="button" class="btn btn-default" >添加</button></td>
+                                <td colspan="2"><button id="add" type="button" class="btn btn-default btn btn-info" >添加</button></td>
                             </tr>
                         </table>
                     </form>
                 </div>
                 <div class="dow"> <!--已经预约客户-->
-                    <table class="table table-bordered text-center">
+                    <table class="table table-bordered text-center table-striped">
                         <thead>
                             <tr>
                                 <td>序号</td>
@@ -305,7 +417,7 @@
                     </table>
                 </div>
                 <div class="dow"> <!--有印象客户-->
-                    <table class="table table-bordered text-center">
+                    <table class="table table-bordered text-center table-striped">
                         <thead>
                             <tr>
                                 <td>序号</td>
@@ -322,7 +434,7 @@
                     </table>
                 </div>
                 <div class="dow"> <!--待确定预约时间-->
-                    <table class="table table-bordered text-center">
+                    <table class="table table-bordered text-center table-striped">
                         <thead>
                             <tr>
                                 <td>序号</td>
@@ -339,7 +451,7 @@
                     </table>
                 </div>
                 <div class="dow"> <!--预约上门-->
-                    <table class="table table-bordered text-center">
+                    <table class="table table-bordered text-center table-striped">
                         <thead>
                             <tr>
                                 <td>序号</td>
@@ -356,7 +468,7 @@
                     </table>
                 </div>
                 <div class="dow"> <!--已出单-->
-                    <table class="table table-bordered text-center">
+                    <table class="table table-bordered text-center table-striped">
                         <thead>
                             <tr>
                                 <td>序号</td>
