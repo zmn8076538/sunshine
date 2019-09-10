@@ -1,7 +1,7 @@
 import MySQLdb
 
 connection = MySQLdb.connect(
-                            host = '47.101.179.114',
+                            host = '148.70.30.54',
                             user = 'root',
                             password = 'Zmn19880723@',
                             db = 'sunshine',
